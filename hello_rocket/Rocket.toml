@@ -1,0 +1,7 @@
+[default]
+port = 8080
+secret_key = "mYW528W7vJiSQCs0w0l0OZhwroYMpxMrNrmz2FTbpR4="
+temp_dir = "E:\\Rust\\learn\\hello_rocket\\tmp\\imgs"
+
+[default.limits]
+file = "10MiB"
