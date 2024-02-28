@@ -1,0 +1,47 @@
+@use "../../styles/name.scss" as *;
+@use "../src/var.scss" as *;
+
+$component: "Main";
+
+@include buildView($component) {
+  height: 100%;
+  width: inherit;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+  // overflow-y: scroll;
+  // scrollbar-width: thin;
+  @include buildWrap($component,'desc'){
+    font-weight: 700;
+    padding: 0 16px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    &::before{
+      content: "";
+      height: 32px;
+      width: 6px;
+      position: absolute;
+      top: 0;
+      transform: translateY(50%);
+      left: 32px;
+      background-color: $bg-color-hover;
+    }
+    &::after{
+      content: "";
+      height: 32px;
+      width: 6px;
+      position: absolute;
+      top: 0;
+      transform: translateY(50%);
+      right: 32px;
+      background-color: $bg-color-hover;
+    }
+  }
+  @include buildWrap($component,'detail'){
+    height: calc(100% - 68px);
+    width: 100%;
+  }
+}

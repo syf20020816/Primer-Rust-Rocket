@@ -1,0 +1,203 @@
+/**
+* ============================================
+* @author:syf20020816@outlook.com
+* @since:20230523
+* @version:0.0.1
+* @type:scss
+* @description:
+* 1. 本文件用于覆盖官方的Element-plus默认样式
+* 2. 以下注释中的$colors中的变量内容均为您可修改的内容
+* 3. 若你需要修改请进行对应
+* 4. 修改完成后请注释掉默认的样式导入：import 'element-plus/dist/index.css'
+* 5. 注释完后修改为当前文件导入即可
+* 6. 若你仅是覆盖颜色请依然导入import 'element-plus/dist/index.css'而且确保在当前scss文件前
+* ============================================
+*/
+
+/*
+$colors: () !default;
+$colors: map.deep-merge(
+  (
+    'white': #ffffff,
+    'black': #000000,
+    'primary': (
+      'base': #409eff,
+    ),
+    'success': (
+      'base': #67c23a,
+    ),
+    'warning': (
+      'base': #e6a23c,
+    ),
+    'danger': (
+      'base': #f56c6c,
+    ),
+    'error': (
+      'base': #f56c6c,
+    ),
+    'info': (
+      'base': #909399,
+    ),
+  ),
+  $colors
+);
+*/
+
+/* 通过@forward指令重写element-plus默认的scss变量，特别是将主题颜色primary的基础色改为#3b3a39 */
+@forward "element-plus/theme-chalk/src/common/var.scss" with (
+  $colors: (
+    "primary": (
+      "base": #3b3a39
+    )
+  )
+);
+
+/* 导入Element Plus的所有默认样式，使用时需确保项目配置正确 */
+@use "element-plus/theme-chalk/src/index.scss" as *;
+/* 导入自定义的变量文件，可以在此文件中定义自己需要覆盖的变量 */
+@use "./src/var.scss" as *;
+
+/* 以下是对一些HTML元素和Element Plus组件的样式进行全局重置和自定义 */
+
+/* 重置body的默认外边距和内边距 */
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* 为Element Plus的布局容器、头部、主体、页脚设置统一的字体样式 */
+.el-container,
+.el-header,
+.el-main,
+i,
+.el-footer {
+  padding: 0;
+  margin: 0;
+  font-weight: 700;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial,
+    sans-serif;
+}
+
+/* 移除链接的下划线 */
+a {
+  text-decoration: none;
+}
+
+/* 移除列表项的默认样式 */
+li {
+  list-style: none;
+}
+
+/* 自定义Element Plus标签页项的悬浮和激活状态下的颜色 */
+.el-tabs__item:hover,
+.el-tabs__item.is-active {
+  color: $force-color;
+}
+.el-tabs__active-bar {
+  background-color: $force-color;
+}
+
+/* 隐藏加载动画的圆形进度条，并自定义加载动画的样式 */
+.el-loading-spinner .circular {
+  display: none !important;
+}
+.el-loading-spinner {
+  // background: url('enter your loading img url') no-repeat;
+  background-size: 100px 100px;
+  background-position: center;
+  width: 300px;
+  height: 300px;
+  position: absolute !important;
+  left: 50%;
+  top: 40% !important;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* 自定义加载文字的样式 */
+.el-loading-text {
+  width: 300px;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: $force-color !important;
+  font-size: 18px !important;
+}
+
+/* 设置根元素的字体、行高、字体权重、基础字号、颜色方案，并自定义一些全局颜色变量 */
+:root {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.5em;
+  font-weight: 400;
+  font-size: 16px;
+  color-scheme: light dark;
+
+  color: #ffffff;
+  // background-color: #242424;
+  background-color: $bg-color-dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  // 覆盖基本样式颜色
+  --el-rate-text-color: #fff;
+  --el-menu-text-color: #dfdfdf;
+  --el-text-color-primary: #7a7a7a;
+  --el-table-bg-color: #3b3a39;
+  --el-table-header-bg-color: #3b3a39;
+}
+
+/* 为应用程序根元素设置默认文本对齐方式 */
+#app {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* 自定义图标字体的大小 */
+.iconfont {
+  font-size: 2vh !important;
+}
+
+/* 自定义弹出框的最大高度和滚动条样式 */
+.el-popover {
+  max-height: 273px !important;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+/* 自定义搜索结果包装器的样式，包括头部和中心部分的布局、滚动条和文本对齐 */
+.search-result-wrapper {
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    h4 {
+      margin: 6px 0;
+    }
+    .el-icon {
+      cursor: pointer;
+    }
+  }
+  .center {
+    max-height: 200px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    text-align: left;
+    .search-item-wrapper {
+      text-align: left;
+      box-sizing: border-box;
+      padding: 6px;
+      border-top: 2px dashed #3b3a39;
+      border-bottom: 2px dashed #3b3a39;
+      
+      .item-des-wrapper {
+      }
+    }
+  }
+}

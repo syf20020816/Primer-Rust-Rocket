@@ -1,4 +1,3 @@
-//第4章/main.rs
 #[macro_use]
 extern crate rocket;
 

@@ -1,0 +1,73 @@
+@use "../name.scss" as *;
+@use "../src/var.scss" as *;
+
+$component: "Header";
+
+@include buildView($component) {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  border-bottom: 1px solid $bg-color-hover;
+
+  @include buildWrap($component, "logo-wrap") {
+    cursor: pointer;
+    height: inherit;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.35s ease-in-out;
+    &:hover {
+      background-color: $bg-color-hover;
+    }
+  }
+  .title {
+    display: inline-block;
+    margin-right: 48px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    .clip {
+      display: inline-block;
+      background: linear-gradient(90deg, #f60, #f90);
+      background-clip: text;
+      color: transparent;
+    }
+  }
+  .search-wrap {
+    width: 46%;
+    box-sizing: border-box;
+    margin: 0 8%;
+  }
+  @include buildWrap($component, "right-wrap") {
+    height: 100%;
+    width: fit-content;
+    min-width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & > div {
+      min-width: 180px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  :deep(.el-drawer) {
+    background-color: $bg-color-menu !important;
+    .setting-drawer-title {
+      font-weight: 700;
+      color: $bg-color-light;
+    }
+  }
+  .alert-wrapper {
+    text-align: left;
+    font-weight: 700;
+  }
+}

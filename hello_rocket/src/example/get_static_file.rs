@@ -1,4 +1,3 @@
-//第4章/main.rs
 #[macro_use]
 extern crate rocket;
 use rocket::fs::FileServer;
@@ -7,5 +6,5 @@ use rocket::fs::FileServer;
 fn rocket() -> _ {
     rocket::build()
         //挂载static目录
-        .mount("/static",FileServer::from("static/"))
+        .mount("/static", FileServer::from("static/"))
 }

@@ -1,12 +1,11 @@
-//第4章/main.rs
 #[macro_use]
 extern crate rocket;
 
-use rocket::Request;
 use rocket::request::{FromRequest, Outcome};
+use rocket::Request;
 // 使用转发重定向功能
 use rocket::response::Redirect;
-use rocket_dyn_templates::{Template};
+use rocket_dyn_templates::Template;
 
 // 具体逻辑：
 // 1. 用户登录需要调用/login请求
@@ -24,9 +23,7 @@ impl<'r> FromRequest<'r> for LoginGuard {
         let req = request.headers();
         match req.get_one("admin").unwrap() {
             "true" => Outcome::Success(LoginGuard(true)),
-            _ => {
-                Outcome::Success(LoginGuard(false))
-            }
+            _ => Outcome::Success(LoginGuard(false)),
         }
     }
 }
@@ -34,8 +31,8 @@ impl<'r> FromRequest<'r> for LoginGuard {
 #[get("/login/<token>")]
 fn login(token: String, guard: LoginGuard) -> Redirect {
     match guard.0 {
-        true => { Redirect::to(uri!(admin())) }
-        false => { Redirect::to(uri!(user())) }
+        true => Redirect::to(uri!(admin())),
+        false => Redirect::to(uri!(user())),
     }
 }
 
@@ -51,5 +48,5 @@ fn user() -> Template {
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build().mount("/api", routes![login,admin,user])
+    rocket::build().mount("/api", routes![login, admin, user])
 }

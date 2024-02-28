@@ -1,0 +1,14 @@
+#V2
+define namespace test
+define database test
+define table user
+create user set userId = '1001', name = 'Matt';
+select * from user;
+info for ns
+info for db
+info for namespace;
+info for db;
+define namespace test2;
+define database test2;
+select * from user;
+info for table user;

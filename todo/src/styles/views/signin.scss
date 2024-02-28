@@ -1,0 +1,32 @@
+@use "../../styles/name.scss" as *;
+@use "../src/var.scss" as *;
+
+$component: "Signin";
+
+@include buildView($component) {
+  height: 100%;
+  width: inherit;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  align-content: space-between;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  @include buildWrap($component, "form") {
+    width: calc(100% - 320px);
+    box-sizing: border-box;
+    padding-right: 32px;
+  }
+  @include buildWrap($component, "infos") {
+    width: 320px;
+    align-content: space-around;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+    .el-alert {
+      margin-bottom: 16px;
+      text-align: left;
+    }
+  }
+}

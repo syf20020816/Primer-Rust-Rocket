@@ -1,0 +1,214 @@
+@use "../../styles/name.scss" as *;
+@use "../src/var.scss" as *;
+
+$component: "User";
+
+@include buildView($component) {
+  height: 100%;
+  width: inherit;
+  display: inline-block;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  @include buildWrap($component, "avatar") {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 16px;
+    #userAvatar {
+      height: 96px;
+      width: 96px;
+      margin: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    @include buildWrap("avatar", "userInfo") {
+      height: 96px;
+      width: calc(100% - 120px);
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      align-content: space-around;
+      flex-wrap: wrap;
+
+      .title {
+        font-weight: 800;
+        letter-spacing: 2px;
+        font-size: 26px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(90deg, #f60, #f90);
+        background-clip: text;
+        color: transparent;
+      }
+      .email {
+        width: 100%;
+        text-align: start;
+      }
+    }
+  }
+  @include buildWrap($component, "details") {
+    box-sizing: border-box;
+    padding: 16px;
+
+    .details-title {
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      & > span {
+        font-weight: 700;
+        font-size: 18px;
+      }
+      .info-extra {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .el-rate__text {
+          color: $force-color;
+        }
+        .el-button {
+          margin-left: 32px;
+        }
+      }
+    }
+    .info-details-list {
+      padding: 8px 16px;
+      box-sizing: border-box;
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .info-item {
+        margin: 6px 0;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        .item-title {
+          width: 50%;
+          text-align: left;
+          font-weight: 700;
+        }
+        &:nth-last-child(1) {
+          width: 100%;
+          padding: 12px 0;
+          margin: 16px 0;
+          border-top: 2px dashed $force-color;
+          border-bottom: 2px dashed $force-color;
+        }
+      }
+    }
+  }
+  @include buildWrap($component, "teams") {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    scrollbar-width: thin;
+    .team-no {
+      box-sizing: border-box;
+      padding: 16px;
+      font-size: 16px;
+      .create-wrapper {
+        font-weight: 700;
+        color: $force-color;
+        cursor: pointer;
+      }
+    }
+    .team-item {
+      background-color: $bg-color-menu;
+      box-shadow: 0px 0px 0px 1px $bg-color-hover;
+      box-sizing: border-box;
+      border-radius: 6px;
+      margin: 32px;
+      height: 240px;
+      width: 300px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-content: space-around;
+      padding: 12px;
+      .header {
+        display: flex;
+
+        height: 48px;
+        width: 100%;
+        .info {
+          text-indent: 20px;
+          text-align: left;
+          height: 48px;
+          width: calc(100% - 48px);
+        }
+        .teamIcons {
+          height: 48px;
+          width: 48px;
+          border-radius: 6px;
+        }
+      }
+    }
+  }
+}
+
+.avatarDrawer {
+  background-color: $bg-color-menu !important;
+  .el-drawer__title {
+    color: $force-color;
+  }
+  .drawer-details {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: space-around;
+    flex-wrap: wrap;
+    .avatar-list {
+      height: fit-content;
+      .avatar-item {
+        cursor: pointer;
+        height: fit-content;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .common-img {
+          height: 56px;
+          width: 56px;
+          border-radius: 50%;
+        }
+        .infos {
+          padding: 0 6px;
+          box-sizing: border-box;
+          width: calc(100% - 56px);
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+        }
+        &:hover {
+          background-color: $bg-color-hover;
+        }
+      }
+    }
+    .chooseInfo {
+      margin: 16px 0;
+      div {
+        font-size: 18px;
+        line-height: 1.5em;
+        font-weight: 700;
+      }
+    }
+  }
+}

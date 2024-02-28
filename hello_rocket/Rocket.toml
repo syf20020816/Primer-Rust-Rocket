@@ -5,3 +5,9 @@ temp_dir = "E:\\Rust\\learn\\hello_rocket\\tmp\\imgs"
 
 [default.limits]
 file = "10MiB"
+
+# [release]
+# port = 8081
+# secret_key = "Kul9V8lQNhmvU4C1//XdNqlCNuibzHHS9cUidERZQOGV5lsctphpMvgo4lkm+32b
+# nPn5ExXO6bJZvacY79CwK5kB+TkQclftKGgWVPm0PClgWLvIoOU8lMByqqt+8IX6
+# 8r9N1TlVIrIjlsxR0IPaW3NgK9S19HK4Ku3aWkGyobg="

@@ -31,3 +31,5 @@ src-tauri/.idea
 
 ./hello_rocket/target
 hello_rocket/target
+**/target/
+**/node_modules/

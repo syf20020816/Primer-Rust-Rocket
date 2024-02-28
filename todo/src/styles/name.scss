@@ -1,0 +1,41 @@
+/**
+* ============================================
+* @author:syf20020816@outlook.com
+* @since:20230523
+* @version:0.0.1
+* @type:scss
+* @description:用于构建class，id name
+* 这些mixin提供了一种灵活的方式来构建和管理CSS类名，使得CSS更加模块化和可重用。
+* 通过传递组件名称和其他参数，开发者可以快速生成具有一致命名规范的样式类，便于维护和理解
+* ============================================
+*/
+
+// 定义一个名为buildView的mixin，用于构建具有特定组件名称为基础的视图容器
+@mixin buildView($componentName){
+  // 将传入的组件名与字符串"_view"组合，创建一个新的容器名称
+  $container:$componentName+"_view";
+  // 使用插值语法动态生成容器的类名，并应用@content中的样式
+  ##{$container}{
+    @content;
+  }
+}
+
+// 定义一个名为buildWrap的mixin，用于构建组件内部的包装层
+@mixin buildWrap($componentName,$wrap){
+  // 将组件名称和指定的包装层名称通过"-"连接，再加上"_wrap"后缀，组成新的包装层名称
+  $cWrap:$componentName+"-"+$wrap+"_wrap";
+  // 动态生成包装层的类名，并将@content中的样式应用于该类
+  .#{$cWrap}{
+    @content;
+  }
+}
+
+// 定义一个名为build的mixin，用于构建具有特定组件名称和其他标识符的类
+@mixin build($componentName,$other){
+  // 将组件名称和其他标识符通过"-"连接，形成新的类名
+  $component:$componentName+"-"+$other;
+  // 动态生成该类的类名，并将@content中的样式应用于该类
+  .#{$component}{
+    @content;
+  }
+}

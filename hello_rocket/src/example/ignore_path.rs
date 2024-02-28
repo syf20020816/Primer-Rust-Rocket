@@ -1,7 +1,5 @@
-//第4章/main.rs
 #[macro_use]
 extern crate rocket;
-
 
 // 这依然使用GET请求，但发起HEAD请求
 #[get("/index/<say>")]
@@ -37,10 +35,9 @@ fn easy_restful(id: &str) -> String {
     format!("User: id -> {}", id)
 }
 
-
 #[launch]
 fn rocket() -> _ {
     rocket::build()
-        .mount("/apiV1_4", routes![index,easy_restful])
+        .mount("/apiV1_4", routes![index, easy_restful])
         .mount("/apiV1_0", routes![drop_old_api])
 }

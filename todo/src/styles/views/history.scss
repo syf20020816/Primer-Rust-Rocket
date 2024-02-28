@@ -1,0 +1,74 @@
+@use "../../styles/name.scss" as *;
+@use "../src/var.scss" as *;
+
+$component: "History";
+
+@include buildView($component) {
+  height: 100%;
+  width: inherit;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  @include buildWrap($component, "left") {
+    height: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    width: 40%;
+    border-right: 1px dashed $bg-color-hover;
+    .el-calendar {
+      background-color: $bg-color-hover;
+    }
+    :deep(.el-calendar-day) {
+      &:hover {
+        background-color: $force-color !important;
+      }
+    }
+    .current {
+      &:hover {
+        background-color: $force-color !important;
+      }
+    }
+    :deep(.is-today) {
+      font-weight: 700;
+      color: #ffd15e !important;
+    }
+    :deep(.el-calendar-table td.is-selected) {
+      background-color: $force-color !important;
+    }
+    .is-selected {
+      font-weight: 700;
+      color: #ff5e61;
+      // background-color: var(--el-calendar-selected-bg-color);
+      background-color: $force-color;
+    }
+  }
+  @include buildWrap($component, "mid") {
+    width: 20%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    border-right: 1px dashed $bg-color-hover;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  @include buildWrap($component, "right") {
+    width: 40%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    position: relative;
+    &::before {
+      content: "";
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      position: absolute;
+      background-color: #3d3d3d;
+      filter: grayscale(80%) opacity(0.4);
+      cursor: not-allowed;
+    }
+  }
+}

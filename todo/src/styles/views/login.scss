@@ -1,0 +1,9 @@
+@use "../../styles/name.scss" as *;
+@use "../src/var.scss" as *;
+
+$component: "Login";
+
+@include buildView($component) {
+  height: 100%;
+  width: inherit;
+}

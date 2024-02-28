@@ -1,8 +1,7 @@
-//第4章/main.rs
 #[macro_use]
 extern crate rocket;
 
-use rocket::http::{CookieJar, Cookie};
+use rocket::http::{Cookie, CookieJar};
 
 #[get("/cookie/add")]
 fn add_cookie(cookies: &CookieJar<'_>) -> () {
@@ -22,5 +21,5 @@ fn del_cookie(cookies: &CookieJar<'_>) -> () {
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build().mount("/api", routes![add_cookie,get_cookie,del_cookie])
+    rocket::build().mount("/api", routes![add_cookie, get_cookie, del_cookie])
 }

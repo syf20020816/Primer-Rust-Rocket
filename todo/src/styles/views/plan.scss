@@ -1,0 +1,50 @@
+@use "../../styles/name.scss" as *;
+@use "../src/var.scss" as *;
+
+$component: "Plan";
+
+@include buildView($component) {
+  height: 100%;
+  width: inherit;
+  display: inline-block;
+  .plan-tabs{
+    height: 100%;
+    .custom-tabs-label{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .svg{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .title{
+        margin-left: 1em;
+      }
+    }
+    .el-tabs__content{
+      height: calc(100vh - 120px) !important;
+      .el-tab-pane{
+        height: 100%;
+        box-sizing: border-box;
+        .c_p_wrapper{
+          height: calc(100%);
+        }
+        .calendar_wrapper{
+          height: calc(100%);
+        }
+        .timeline_wrapper{
+          height: calc(100%);
+        }
+        .table_wrapper{
+          width: calc(100vw - 60px);
+          box-sizing: border-box;
+          padding: 0 12px;
+          height: 100%;
+        }
+      }
+    }
+    
+  }
+
+}
